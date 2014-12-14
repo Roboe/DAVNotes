@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!--
+		This file is part of DAVNotes, a free software for taking notes right
+		in your browser, and everywhere else where a browser can be run.
+		@author Roberto M.F. (Roboe)
+
+		DAVNotes is free software: you can redistribute it and/or
+		modify it under the terms of the MIT License.
+		You should have received a copy of the MIT Open Source License
+		along with DAVNotes. If not, see <http://opensource.org/licenses/MIT>.
+	-->
+	<meta charset="utf-8">
+	<title>DAVNotes launcher</title>
+	<script>
+		// Trun it to false to always install 'normal' package
+		var supportHIDPI = false;
+		var isFFOS = ("mozApps" in navigator && navigator.userAgent.search("Mobile") != -1);
+
+		if (isFFOS) {
+			var manifestUrl = 'http://roboe.github.io/DAVNotes/manifest.webapp';
+			var req = navigator.mozApps.installPackage(manifestUrl);
+			req.onsuccess = function () {
+				console.log(this.result.origin);
+			};
+			req.onerror = function () {
+				console.log(this.error.name);
+			};
+
+		} else {
+			window.location.href = "app.html"
+		}
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>

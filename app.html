@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!--
+		This file is part of DAVNotes, a free software for taking notes right
+		in your browser, and everywhere else where a browser can be run.
+		@author Roberto M.F. (Roboe)
+
+		DAVNotes is free software: you can redistribute it and/or
+		modify it under the terms of the MIT License.
+		You should have received a copy of the MIT Open Source License
+		along with DAVNotes. If not, see <http://opensource.org/licenses/MIT>.
+	-->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<title>DAVNotes</title>
+	<!-- Main style -->
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+
+<body>
+	<!-- Index screen -->
+	<section id="index" role="region" data-position="index">
+		<header>
+			<a><img	src="img/icon60.png"></a>
+			<!--a href="#menu"><span data-icon="menu" data-l10n="toggle-sidebar">toggle sidebar</span></a-->
+			<menu type="toolbar">
+				<a href="#search" id="index-btn-search"><span data-icon="search">search</span></a>
+				<a href="#editor" id="index-btn-compose"><span data-icon="compose">new note</span></a>
+			</menu>
+			<h1>DAVNotes <em id="index-total">0</em></h1>
+		</header>
+		<aside class="sidebar">
+			<h1>Header</h1>
+			<h2>Subheader</h2>
+			<ul>
+				<li>First option</li>
+				<li>Second option</li>
+			</ul>
+			<h2>Subheader</h2>
+			<ul>
+				<li>First option</li>
+				<li>Second option</li>
+			</ul>
+		</aside>
+		<article class="scrollable">
+			<ul id="index-note-list">
+			</ul>
+		</article>
+	</section>
+	<!-- end index -->
+
+
+	<!-- Search note screen -->
+	<section id="search" class="right" role="region" data-position="right">
+		<header>
+			<a id="search-btn-back" href="#index"><span data-icon="back">back</span></a>
+			<p id="search-searchbox">
+				<input type="text" id="search-criteria" placeholder="Search..." required="required">
+				<button type="reset" id="search-clear">Clear</button>
+			</p>
+		</header>
+		<article class="scrollable">
+			<ul id="search-note-list">
+			</ul>
+		</article>
+	</section>
+
+
+	<!-- View note screen -->
+	<section id="viewer" class="right" role="region" data-position="right">
+		<header>
+			<a id="viewer-btn-back" href="#index"><span data-icon="back">back</span></a>
+			<menu type="toolbar">
+				<a id="viewer-btn-delete"><span data-icon="delete">delete</span></a>
+				<a href="#editor" id="viewer-btn-edit"><span data-icon="edit">edit</span></a>
+			</menu>
+			<h1>View note</h1>
+		</header>
+		<article class="scrollable">
+			<header>
+				<h2 id="viewer-note-title">Title</h2>
+			</header>
+			<p id="viewer-note-text">Content</p>
+		</article>
+	</section>
+
+
+	<!-- Note editor screen -->
+	<section id="editor" class="right" role="region" data-position="right">
+		<header>
+			<a id="editor-btn-back" href="#viewer"><span data-icon="back">back</span></a>
+			<menu type="toolbar">
+				<a id="editor-btn-save"><span data-icon="tick">save</span></a>
+			</menu>
+			<h1>Edit note</h1>
+		</header>
+		<article class="scrollable">
+			<div class="wrapper">
+				<input type="text" id="editor-note-title" placeholder="Title">
+			</div>
+			<div class="wrapper">
+				<textarea id="editor-note-text" placeholder="Content"></textarea>
+			</div>
+		</article>
+	</section>
+
+	<!-- IndexedDB-WebSql adapter -->
+	<script type="text/javascript" defer src="lib/idbshim/IndexedDBShim.min.js"></script>
+	<!-- PageDown, markdown converter -->
+	<script type="text/javascript" defer src="lib/pagedown/Markdown.Converter.min.js"></script>
+	<script type="text/javascript" defer src="lib/pagedown/Markdown.Sanitizer.min.js"></script>
+	<!-- Twemoji -->
+	<script type="text/javascript" defer src="lib/twemoji/twemoji.min.js"></script>
+
+	<!-- IndexedDB Connector own library -->
+	<script type="text/javascript" defer src="js/davIndexedDB.js"></script>
+	<!-- Hash navigation own library -->
+	<script type="text/javascript" defer src="js/davNav.js"></script>
+	<!-- App functionality -->
+	<script type="text/javascript" defer src="js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+{
+	"version": "1.0",
+	"name": "DAVNotes",
+	"description": "An app to keep valuable notes with you that supports Markdown syntax and Twitter's emojis.",
+	"launch_path": "/app.html",
+	"icons": {
+		"60": "/img/icon60.png",
+		"128": "/img/icon128.png"
+	},
+	"developer": {
+		"name": "Roboe",
+		"url": "https://github.com/Roboe"
+	},
+	"locales": {
+		"es": {
+			"description": "Una aplicación para mantener tus preciadas notas contigo que soporta escritura en Markdown y los emojis de Twitter.",
+			"developer": {
+				"name": "Roboe",
+				"url": "https://github.com/Roboe"
+			}
+		}
+	},
+	"default_locale": "en"
+}

@@ -1,0 +1,447 @@
+/**
+ * This file is part of DAVNotes, a free software for taking notes right
+ * in your browser, and everywhere else where a browser can be run.
+ * @author Roberto M.F. (Roboe)
+ *
+ * DAVNotes is free software: you can redistribute it and/or
+ * modify it under the terms of the MIT License.
+ * You should have received a copy of the MIT Open Source License
+ * along with DAVNotes. If not, see <http://opensource.org/licenses/MIT>.
+ */
+
+/* ----------------------------------------------------------------------
+IMPORTS
+---------------------------------------------------------------------- */
+
+@import "_reset.css";
+@import "_transitions.css";
+@import "_gaia-icons-embedded.css";
+
+/* ----------------------------------------------------------------------
+OVERALL CONFIG
+---------------------------------------------------------------------- */
+
+/* apply a natural box layout model to all elements */
+
+*,
+*:before,
+*:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+html {
+	min-height: 100%;
+	height: 100%;
+	max-width: 100%;
+	width: 100%;
+	overflow: hidden;
+	font-size: 62.5%;
+	/* Setting base font to 10px and define all your units in rem. 1rem = 10px */
+}
+body {
+	font-size: 1rem;
+	font-family: sans-serif, Helvetica, Arial;
+	text-rendering: optimizeLegibility;
+	color: #444;
+	margin: 0;
+	min-height: 100%;
+	height: 100%;
+	max-width: 100%;
+	width: 100%;
+	overflow: hidden;
+	display: block;
+}
+/* ----------------------------------------------------------------------
+PURE CSS TOTAL NOTES COUNTER
+---------------------------------------------------------------------- */
+
+#index-total::before {
+	content: "(";
+}
+#index-total::after {
+	content: ")";
+}
+/*
+body {
+  counter-reset: totalNotes;
+}
+
+#index article li {
+  counter-increment: totalNotes;
+}
+
+#index-total::after {
+  content: counter(totalNotes);
+}
+*/
+
+/* ----------------------------------------------------------------------
+FONTS
+---------------------------------------------------------------------- */
+
+h1 {
+	/* Main header */
+	font-size: 2.5rem;
+	font-weight: normal;
+}
+h2 {
+	/* Subheader, Dialog title */
+	font-size: 1.9rem;
+	font-weight: normal;
+}
+p {
+	font-size: 1.6rem;
+	font-weight: normal;
+	line-height: 2.2rem;
+}
+/* ----------------------------------------------------------------------
+SCREEN LAYOUT
+---------------------------------------------------------------------- */
+
+section[role="region"] {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 0;
+	height: 100%;
+	background: #fff;
+}
+section[role="region"].left,
+section[role="region"].right {
+	z-index: -15;
+}
+section[role="region"].current {
+	z-index: 15;
+}
+section[role="region"] > header:first-child menu {
+	float: right;
+}
+section[role="region"] > header:first-child h1 {
+	font-size: 2.3rem;
+	line-height: 5rem;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display: block;
+	overflow: hidden;
+	margin: 0px;
+	padding: 0px 1rem;
+	height: 100%;
+	font-weight: 300;
+	font-style: italic;
+	text-align: center;
+	color: #FFFFFF;
+}
+section[role="region"] > header:first-child h1 em {
+	font-weight: 400;
+	font-size: 1.5rem;
+	line-height: 1em;
+	font-style: normal;
+}
+.hidden {
+	visibility: hidden;
+}
+.display-none {
+	display: none;
+}
+.center {
+	text-align: center;
+}
+.fixed {
+	position: fixed;
+}
+.horizontal-center {
+	margin: 0 auto;
+}
+.float-left {
+	float: left;
+}
+.float-right {
+	float: right;
+}
+.content {
+	padding: 1.5rem;
+}
+.scrollable {
+	overflow: auto;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+	/*position: relative;
+  height: 100%;*/
+	position: absolute;
+	top: 5rem;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+.scrollable.header {
+	height: -webkit-calc(100% - 5rem);
+	height: -moz-calc(100% - 5rem);
+	height: calc(100% - 5rem);
+	top: 5rem;
+}
+/* ----------------------------------------------------------------------
+COMPONENTS LAYOUT
+---------------------------------------------------------------------- */
+
+.sidebar {
+	display: none;
+	/* TEMPORAL */
+}
+a[id*="btn"] {
+	cursor: pointer;
+}
+article > ul,
+article > ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+article li {
+	padding: 0 1.5rem;
+	-moz-animation: fadeIn 0.4s ease;
+	-o-animation: fadeIn 0.4s ease;
+	animation: fadeIn 0.4s ease;
+	-webkit-animation: fadeIn 0.4s ease;
+}
+article li:active {
+	background-color: rgba(0, 213, 255, 0.3);
+}
+article li > a {
+	text-decoration: none;
+	color: inherit;
+}
+article li > a > p {
+	font-size: 1.9rem;
+	padding: 1.5rem 0.75rem 1.5rem 1.5rem;
+	height: calc(1.5rem * 2 + 2.2rem + 1px);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+article header > h2,
+article li > a > p {
+	border-bottom: 1px solid #E7E7E7;
+}
+article header > h2,
+article > p {
+	padding: 1.5rem;
+	margin: 0 1.5rem;
+}
+article > .wrapper {
+	margin: 0 1.5rem;
+}
+article > .wrapper:first-child {
+	border-bottom: 1px solid #E7E7E7;
+}
+article > .wrapper:last-child {
+	height: calc(100% - 5rem - 2rem);
+}
+.wrapper > input,
+.wrapper > textarea {
+	width: 100%;
+	padding: 1rem 1.5rem;
+	border: 1px dashed #C5C5C5;
+	-webkit-border-radius: .25rem;
+	-moz-border-radius: .25rem;
+	border-radius: .25rem;
+	margin: .5rem 0;
+	font-weight: normal;
+	display: block;
+	background: none;
+	/* Overrides Gecko gradient background (Android/FFOS) */
+}
+.wrapper > input:focus,
+.wrapper > textarea:focus {
+	border-color: #808080;
+	outline: 0;
+	/* Overrides Webkit/Blink blue/orange halo */
+}
+.wrapper > input {
+	font-size: 1.9rem;
+}
+.wrapper > textarea {
+	font: inherit;
+	font-size: 1.6rem;
+	height: 100%;
+}
+#viewer-note-text li + br,
+#viewer-note-text p + br,
+#viewer-note-text h1 + br,
+#viewer-note-text h2 + br,
+#viewer-note-text h3 + br,
+#viewer-note-text ul > br:first-child,
+#viewer-note-text ol > br:first-child {
+	display: none;
+}
+/* ----------------------------------------------------------------------
+Custom styled components
+---------------------------------------------------------------------- */
+section[role="region"] > header:first-child a > img {
+	width: 4rem;
+	margin: .5rem 0;
+}
+
+button.three-bar {
+	width: 30%;
+	margin: 0 1%;
+}
+button.inline {
+	padding: 0 2rem;
+	width: auto;
+}
+#note_title {
+	border-bottom: 0.1rem solid #E6E6E6;
+}
+#note_title + button[type="reset"] {
+	cursor: pointer;
+}
+#note_title,
+#note_text {
+	height: auto;
+	overflow: visible;
+}
+p#search-searchbox {
+	padding: .5rem .5rem .5rem 5rem;
+	height: 5rem;
+}
+p#search-searchbox input[type="text"] {
+	border: 0;
+	height: 4rem;
+	font-size: 1.5rem;
+	padding: .75rem;
+	width: 100%;
+	margin: 0;
+	background: none repeat scroll 0% 0% #F4F4F4;
+	-webkit-border-radius: .5rem;
+	-moz-border-radius: .5rem;
+	border-radius: .5rem;
+}
+p#search-searchbox input[type="text"]:focus {
+	outline: none;
+}
+p#search-searchbox input + button[type="reset"] {
+	position: absolute;
+	top: 0px;
+	right: 0rem;
+	width: 5rem;
+	height: 5rem;
+	opacity: 0;
+	font-size: 0px;
+	background: url('icons/clear.png') no-repeat scroll 50% 50% / 2.4rem auto transparent;
+}
+p#search-searchbox input:focus + button[type="reset"] {
+	opacity: 1;
+	pointer-events: all;
+	cursor: pointer;
+}
+img.emoji {
+	max-height: 1.2em;
+	max-width: 1.2em;
+	margin: 0 .05em 0 .1em;
+	vertical-align: -.2em;
+}
+/* ----------------------------------------------------------------------
+HEADER SKIN: dark
+---------------------------------------------------------------------- */
+
+section[role="region"] > header:first-child {
+	background-color: #242d33;
+	height: 5rem;
+	overflow: auto;
+}
+section[role="region"] > header:first-child a,
+section[role="region"] > header:first-child button {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: relative;
+	display: block;
+	overflow: hidden;
+	float: left;
+	min-width: 5rem;
+	width: auto;
+	height: 5rem;
+	border: medium none;
+	background: none repeat scroll 0px 0px transparent;
+	padding: 0px 1rem;
+	margin: 0px;
+	font-weight: 400;
+	font-size: 1.5rem;
+	line-height: 5rem;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	text-decoration: none;
+	text-align: center;
+	text-shadow: none;
+	font-style: italic;
+}
+section[role="region"] > header:first-child a,
+section[role="region"] > header:first-child button,
+section[role="region"] > header:first-child a,
+section[role="region"] > header:first-child button {
+	color: #fff;
+}
+section[role="region"] > header:first-child a:active,
+section[role="region"] > header:first-child button:active,
+section[role="region"] > header:first-child a:hover,
+section[role="region"] > header:first-child button:hover,
+section[role="region"] > header:first-child a:active,
+section[role="region"] > header:first-child button:active,
+section[role="region"] > header:first-child a:hover,
+section[role="region"] > header:first-child button:hover {
+	background-color: rgba(0, 0, 0, 0.4);
+}
+section[role="region"] > header:first-child a:focus,
+section[role="region"] > header:first-child button:focus,
+section[role="region"] > header:first-child a:focus,
+section[role="region"] > header:first-child button:focus {
+	background-color: transparent;
+}
+section[role="region"] header h2,
+> section[role="region"] header h2 {
+	background-color: #2c353b;
+	color: #fff;
+	border: none;
+}
+/* ----------------------------------------------------------------------
+ANIMATIONS
+---------------------------------------------------------------------- */
+
+[data-position="right"].current {
+	-moz-animation: rightToCurrent 0.4s ease;
+	-o-animation: rightToCurrent 0.4s ease;
+	animation: rightToCurrent 0.4s ease;
+	-webkit-animation: rightToCurrent 0.4s ease;
+}
+[data-position="right"].right {
+	-moz-animation: currentToRight 0.4s ease;
+	-o-animation: currentToRight 0.4s ease;
+	animation: currentToRight 0.4s ease;
+	-webkit-animation: currentToRight 0.4s ease;
+}
+[data-position="edit-mode"] {
+	position: absolute;
+	top: -5rem;
+	left: 0;
+	right: 0;
+	bottom: -7rem;
+	z-index: -1;
+	opacity: 0;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+[data-position="edit-mode"].edit {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 120;
+	opacity: 1;
+}
