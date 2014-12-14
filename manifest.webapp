@@ -2,7 +2,7 @@
 	"version": "1.0",
 	"name": "DAVNotes",
 	"description": "An app to keep valuable notes with you that supports Markdown syntax and Twitter's emojis.",
-	"launch_path": "/app.html",
+	"launch_path": "/DAVNotes/app.html",
 	"icons": {
 		"60": "/img/icon60.png",
 		"128": "/img/icon128.png"
