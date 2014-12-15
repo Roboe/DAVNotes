@@ -17,10 +17,10 @@
 	<script>
 		// Trun it to false to always install 'normal' package
 		var supportHIDPI = false;
-		var isFFOS = ("mozApps" in navigator && navigator.userAgent.search("Mobile") != -1);
+		var isFF = ("mozApps" in navigator);
 
-		if (isFFOS) {
-			var manifestUrl = 'http://roboe.github.io/DAVNotes/manifest.webapp';
+		if (isFF) {
+			var manifestUrl = 'http://Roboe.github.io/DAVNotes/manifest.webapp';
 			var req = navigator.mozApps.installPackage(manifestUrl);
 			req.onsuccess = function () {
 				console.log(this.result.origin);
@@ -29,9 +29,8 @@
 				console.log(this.error.name);
 			};
 
-		} else {
-			window.location.href = "app.html"
 		}
+		window.location.href = "app.html";
 	</script>
 </head>
 
