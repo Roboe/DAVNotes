@@ -12,8 +12,25 @@
 		"url": "https://github.com/Roboe"
 	},
 	"locales": {
+		"eo": {
+			"name": "DAVNotoj",
+			"description": "Aplikaĵo por manteni siajn grandvalorajn notojn, kiu subtenas skribmanieron de Markdown kaj emojiojn de Twitter.",
+			"developer": {
+				"name": "Roboe",
+				"url": "https://github.com/Roboe"
+			}
+		},
 		"es": {
+			"name": "DAVNotas",
 			"description": "Una aplicación para mantener tus preciadas notas contigo que soporta escritura en Markdown y los emojis de Twitter.",
+			"developer": {
+				"name": "Roboe",
+				"url": "https://github.com/Roboe"
+			}
+		},
+		"it": {
+			"name": "DAVNote",
+			"description": "Una app per tenere le proprie preziose note con sé e che supporta la sintassi di Markdown e le emoji di Twitter.",
 			"developer": {
 				"name": "Roboe",
 				"url": "https://github.com/Roboe"
