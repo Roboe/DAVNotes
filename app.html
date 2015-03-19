@@ -14,9 +14,12 @@
 	-->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-	<title>DAVNotes</title>
+	<title data-l10n-id="davnotes-title">DAVNotes</title>
 	<!-- Main style -->
 	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<!-- l10n -->
+	<link rel="resource" type="application/l10n" href="locales/locales.ini">
+	<script src="js/l10n.js"></script>
 </head>
 
 <body>
@@ -26,10 +29,10 @@
 			<a><img	src="img/icon60.png"></a>
 			<!--a href="#menu"><span data-icon="menu" data-l10n="toggle-sidebar">toggle sidebar</span></a-->
 			<menu type="toolbar">
-				<a href="#search" id="index-btn-search"><span data-icon="search">search</span></a>
-				<a href="#editor" id="index-btn-compose"><span data-icon="compose">new note</span></a>
+				<a href="#search" id="index-btn-search"><span data-icon="search" data-l10n-id="index-btn-search">search</span></a>
+				<a href="#editor" id="index-btn-compose"><span data-icon="compose" data-l10n-id="index-btn-compose">new note</span></a>
 			</menu>
-			<h1>DAVNotes <em id="index-total">0</em></h1>
+			<h1><span data-l10n-id="davnotes-title">DAVNotes</span> <em id="index-total">0</em></h1>
 		</header>
 		<aside class="sidebar">
 			<h1>Header</h1>
@@ -55,10 +58,10 @@
 	<!-- Search note screen -->
 	<section id="search" class="right" role="region" data-position="right">
 		<header>
-			<a id="search-btn-back" href="#index"><span data-icon="back">back</span></a>
+			<a id="search-btn-back" href="#index"><span data-icon="back" data-l10n-id="search-btn-back">back</span></a>
 			<p id="search-searchbox">
 				<input type="text" id="search-criteria" placeholder="Search..." required="required">
-				<button type="reset" id="search-clear">Clear</button>
+				<button type="reset" id="search-clear" data-l10n-id="search-clear">Clear</button>
 			</p>
 		</header>
 		<article class="scrollable">
